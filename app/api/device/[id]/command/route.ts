@@ -4,19 +4,19 @@ import { getFood } from "@/lib/feeding"
 import { getWater } from "@/lib/refill"
 
 export async function GET(req: NextRequest, context: { params: { id: string }}){
-    const deviceID = context.params.id;
-    let command: DeviceCommand;
+    const deviceID = context.params.id
+    let command: DeviceCommand
 
     if(deviceID == "FOOD"){
-        command = getFood();
+        command = await getFood(deviceID)
     } else if(deviceID == "WATER"){
-        command = getWater();
+        command = await getWater(deviceID)
     } else {
         command = {
             command: "ERROR",
             reason: "UNKNOWN_DEVICE_ID"
-        };
+        }
     }
 
-    return NextResponse.json(command);
+    return NextResponse.json(command)
 }   

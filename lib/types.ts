@@ -1,5 +1,5 @@
 export type DeviceCommand = 
-| { command: "FEED"; target_g: number, feed_id: string}
+| { command: "FEED"; target_g: number}
 | { command: "REFILL"; target_g: number}
-| { command: "IDLE"; target_g: null}
+| { command: "IDLE" }
 | { command: "ERROR"; reason: string}
