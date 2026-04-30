@@ -4,7 +4,7 @@ import { getFood } from "@/lib/feeding"
 import { getWater } from "@/lib/refill"
 
 export async function GET(req: NextRequest, context: { params: { id: string }}){
-    const deviceID = context.params.id
+    const deviceID = context.params.id.toUpperCase()
     let command: DeviceCommand
 
     if(deviceID == "FOOD"){

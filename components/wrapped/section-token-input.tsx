@@ -58,7 +58,7 @@ export function SectionTokenInput({ onSubmit, isLoading }: SectionTokenInputProp
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mx-auto mb-12 max-w-lg text-pretty text-lg text-muted-foreground"
         >
-          Enter your school's Canvas URL and access token to see your personalized semester recap.
+          Hi.
         </motion.p>
 
         <motion.form
