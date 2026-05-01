@@ -103,7 +103,7 @@ export function DashboardTab() {
       <Card>
         <CardHeader className="flex flex-row items-center gap-2 pb-2">
           <Droplets className="h-5 w-5 text-muted-foreground" />
-          <CardTitle className="text-sm font-medium">Latest Water Drop</CardTitle>
+          <CardTitle className="text-sm font-medium">Amount of Water</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">

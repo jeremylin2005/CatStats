@@ -38,6 +38,7 @@ export async function getFood(deviceID: string): Promise<DeviceCommand> {
     }
 
     await kv.set(`${deviceID}:last_feed_id`, feed_id)
+    await kv.set(`${deviceID}:last_feed_grams`, Math.floor((TOTAL_G/MEALS)))
 
     return {command: "FEED", target_g: (TOTAL_G/MEALS)}
 }
