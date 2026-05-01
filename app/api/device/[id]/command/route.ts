@@ -3,8 +3,8 @@ import { DeviceCommand } from "@/lib/types"
 import { getFood } from "@/lib/feeding"
 import { getWater } from "@/lib/refill"
 
-export async function GET(req: NextRequest, context: { params: { id: string }}){
-    // const deviceID = context.params.id.toUpperCase()
+export async function GET(req: NextRequest, { params }: { params: { id: string }}){
+    const deviceID = params.id
     // let command: DeviceCommand
 
     // if(deviceID == "FOOD"){
@@ -19,5 +19,5 @@ export async function GET(req: NextRequest, context: { params: { id: string }}){
     // }
 
     // return NextResponse.json(command)
-    return Response.json({ id: context.params.id })
+    return Response.json({ id: deviceID })
 }   
