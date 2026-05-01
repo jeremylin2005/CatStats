@@ -31,13 +31,13 @@ export async function getFood(deviceID: string): Promise<DeviceCommand> {
     const date = local.toISOString().split("T")[0]
     const feed_id = `${date}:${slot}`
 
-    const last = await kv.get(`device:${deviceID}:last_feed_id`)
+    const last = await kv.get(`${deviceID}:last_feed_id`)
 
     if(last === feed_id){
         return {command: "IDLE" }
     }
 
-    await kv.set(`device:${deviceID}:last_feed_id`, feed_id)
+    await kv.set(`${deviceID}:last_feed_id`, feed_id)
 
     return {command: "FEED", target_g: (TOTAL_G/MEALS)}
 }

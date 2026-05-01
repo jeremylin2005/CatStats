@@ -5,15 +5,16 @@ import { DashboardData } from "@/lib/types"
 export async function GET() {
   try {
     // Get last feed info
-    const lastFeedGrams = await kv.get<number>("device:FOOD:last_feed_grams")
-    const lastFeedTime = await kv.get<string>("device:FOOD:last_feed_time")
-    const lastWaterDrop = await kv.get<number>("WATER:last_water_drop")
-    const lastWaterTime = await kv.get<string>("WATER:last_water_time")
+    const lastFeedGrams = Number(await kv.get("FOOD:last_feed_grams"))
+    const lastFeedTime = String(await kv.get("FOOD:last_feed_id"))
+
+    const lastWaterGrams = Number(await kv.get("WATER:last_water_grams"))
+    const lastWaterTime = String(await kv.get("WATER:last_water_time"))
 
     const data: DashboardData = {
       latestFeedGrams: lastFeedGrams ?? null,
       lastFeedTime: lastFeedTime ?? null,
-      latestWaterDrop: lastWaterDrop ?? null,
+      latestWaterDrop: lastWaterGrams ?? null,
       lastWaterTime: lastWaterTime ?? null,
     }
 
