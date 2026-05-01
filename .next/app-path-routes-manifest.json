@@ -1,0 +1,8 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/device/[id]/command/route": "/api/device/[id]/command",
+  "/api/device/[id]/status/route": "/api/device/[id]/status",
+  "/instructions/page": "/instructions",
+  "/page": "/"
+}
