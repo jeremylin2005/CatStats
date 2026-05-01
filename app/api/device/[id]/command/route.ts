@@ -5,11 +5,11 @@ import { getWater } from "@/lib/refill"
 
 export async function GET(req: NextRequest, context: { params: { id: string }}){
     const deviceID = context.params.id.toUpperCase()
+    return NextResponse.json({ hit: "deviceID" })
     let command: DeviceCommand
 
     if(deviceID == "FOOD"){
-        //command = await getFood(deviceID)
-        return NextResponse.json({ hit: "FOOD_BRANCH" })
+        command = await getFood(deviceID)
     } else if(deviceID == "WATER"){
         command = await getWater(deviceID)
     } else {
