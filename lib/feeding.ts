@@ -17,7 +17,7 @@ export async function getFood(deviceID: string): Promise<DeviceCommand> {
     end.setHours(END, 0, 0, 0)
 
     if(local < start || local > end){
-        return {command: "IDLE", reason: "OUTSIDE_FEEDING_HOURS"}
+        return {command: "IDLE" }
     }
 
     const interval = (end.getTime() - start.getTime()) / MEALS
@@ -29,15 +29,15 @@ export async function getFood(deviceID: string): Promise<DeviceCommand> {
     }
 
     const date = local.toISOString().split("T")[0]
-    const event_id = `${date}:${slot}`
+    const feed_id = `${date}:${slot}`
 
-    const last = await kv.get(`device:${deviceID}:last_event_id`)
+    const last = await kv.get(`device:${deviceID}:last_feed_id`)
 
-    if(last === event_id){
-        return {command: "IDLE", reason: "ALREADY_FED"}
+    if(last === feed_id){
+        return {command: "IDLE" }
     }
 
-    await kv.set(`device:${deviceID}:last_event_id`, event_id)
+    await kv.set(`device:${deviceID}:last_feed_id`, feed_id)
 
     return {command: "FEED", target_g: (TOTAL_G/MEALS)}
 }

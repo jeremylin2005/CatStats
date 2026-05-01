@@ -9,8 +9,6 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
 
     if(deviceID == "FOOD"){
         command = await getFood(deviceID)
-    } else if(deviceID == "WATER"){
-        command = await getWater(deviceID)
     } else {
         command = {
             command: "ERROR",
@@ -20,3 +18,21 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
 
     return NextResponse.json(command)
 }   
+
+export async function POST(req: NextRequest, context: { params: Promise<{ id: string }>}){
+    const { id: deviceID } = await context.params
+    const body = await req.json()
+    let command: DeviceCommand
+
+    if(deviceID == "WATER"){
+        let waterLevel = Number(body.waterLevel)
+        command = await getWater(deviceID, waterLevel)
+    } else { 
+        command = {
+            command: "ERROR",
+            reason: "UNKNOWN_DEVICE_ID"
+        }
+    }
+
+    return NextResponse.json(command)
+}
