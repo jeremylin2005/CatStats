@@ -2,7 +2,8 @@ import { DeviceCommand } from "@/lib/types"
 import { kv } from "@vercel/kv"
 
 export async function getFood(deviceID: string): Promise<DeviceCommand> {
-    const now = new Date()
+    const no = new Date()
+    const now = new Date(no.getTime() - 7 * 60 * 60 * 1000)
 
     const START = 7
     const END = 22
