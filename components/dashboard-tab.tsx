@@ -96,7 +96,7 @@ export function DashboardTab() {
           <CardTitle className="text-sm font-medium">Time Since Last Feed</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-2xl font-bold">{formatTimeSince(data?.lastFeedTime ?? null)}</p>
+          <p className="text-2xl font-bold">{data?.lastFeedTime ?? null}</p>
         </CardContent>
       </Card>
 
