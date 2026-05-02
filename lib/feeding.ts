@@ -5,7 +5,7 @@ export async function getFood(deviceID: string): Promise<DeviceCommand> {
     const now = new Date()
     const local = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }))
 
-    const START = 7
+    const START = 0
     const END = 24
     const MEALS = 3
     const TOTAL_G = 40
